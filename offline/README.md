@@ -1,8 +1,8 @@
 # Offline Tools
 
-This repo contains a collection of tools that can be self-hosted for offline use.  These tools have been tested on Docker Desktop for Windows, using Linux containers.
+This directory contains a collection of tools that can be self-hosted for offline use.  These tools have been tested on Docker Desktop for Windows, using Linux containers.
 
-## Tool sets
+## Offline Tool sets
 
 ### Research Toolset
 The research toolset contains the following tools:
@@ -15,7 +15,7 @@ The research toolset contains the following tools:
 The research toolset can be ran using the `docker-compose-research.yml` file. Be sure to [setup offline-tools](#setup) before running docker compose.
 
 ### All tools
-You can run all of the tools using the `docker-compose-all.yml` file. Be sure to [setup offline-tools](#setup) before running docker compose.
+You can run all of the tools using the `docker-compose-all-offline.yml` file. Be sure to [setup offline-tools](#setup) before running docker compose.
 
 ## Setup
 
@@ -65,7 +65,7 @@ You can also pull [`tagged images`](https://www.geeksforgeeks.org/docker-using-i
 
 ### Updating and Exporting Docker images
 
-If you find you want to export a downloaded image, you can use the [`docker save`](https://docs.docker.com/engine/reference/commandline/save/) command.
+If you find you want to save a downloaded image to a tarball, you can use the [`docker save`](https://docs.docker.com/engine/reference/commandline/save/) command.
 - Example saving the `mpepping/cyberchef` image to the `cyberchef.tar` file:
     ```
     docker save -o D:\path-to\docker-image-files\cyberchef.tar mpepping/cyberchef
