@@ -1,0 +1,81 @@
+version: '2'
+
+services:
+  # Mitre Attack Navigator
+  # https://mitre-attack.github.io/attack-navigator/
+  #### Container specific links
+  # GitHub: https://github.com/reuteras/container-attack-navigator
+  # Container: https://hub.docker.com/r/reuteras/container-attack-navigator
+  mitre-navigator:
+    image: reuteras/container-attack-navigator
+    container_name: mitre-navigator
+    ports:
+      - 8080:80
+    restart: unless-stopped
+
+
+  # Heimdall - Application Dashboard
+  # An Application dashboard and launcher
+  #### Container specific links
+  # GitHub: https://github.com/linuxserver/Heimdall
+  # Container: https://hub.docker.com/r/linuxserver/heimdall
+  heimdall:
+    image: lscr.io/linuxserver/heimdall
+    container_name: heimdall
+    ports:
+      - 80:80
+    volumes:
+      - ./appdata/heimdall:/config
+    restart: unless-stopped
+
+
+  # Kiwix - https://www.kiwix.org/
+  # Offline reader for online content like Wikipedia, Project Gutenberg, or TED Talks
+  # Content can be downloaded from https://library.kiwix.org/
+  #### Container specific links
+  # GitHub: https://github.com/kiwix/kiwix-tools
+  # Container: https://hub.docker.com/r/kiwix/kiwix-serve
+  ## NOTE: The container will not run without any .zim files stored in the ./zim-files/ directory.
+  ##         At least one .zim file must exist in the ./zim-files/ directory.
+  kiwix:
+    image: kiwix/kiwix-serve:3.4.0
+    container_name: kiwix
+    ports:
+      - 8180:8080
+    volumes:
+      # the :ro at the end makes the volume read only to the container
+      - ./zim-files:/data:ro
+      #- ./appdata/kiwix:/config
+      #- ./library:/library
+    command: "*.zim"
+    #command: "-M /library/ZIM/*"
+    restart: unless-stopped
+
+
+  # CyberChef - The Cyber Swiss Army Knife
+  # A web app for encryption, encoding, compression and data analysis
+  # https://github.com/gchq/CyberChef
+  #### Container specific links
+  # GitHub: https://github.com/mpepping/docker-cyberchef
+  # Container: https://hub.docker.com/r/mpepping/cyberchef/
+  cyberchef:
+    image: mpepping/cyberchef
+    container_name: cyberchef
+    ports:
+      - 8380:8000
+    restart: unless-stopped
+
+
+  # Draw IO - https://www.diagrams.net/
+  # draw.io is a JavaScript, client-side editor for general diagramming and whiteboarding
+  #### Container specific links
+  # GitHub: https://github.com/jgraph/drawio
+  # Container: https://hub.docker.com/r/jgraph/drawio
+  drawio:
+    image: jgraph/drawio
+    container_name: drawio
+    ports:
+      - 8480:8080
+      - 8443:443
+    restart: unless-stopped
+
