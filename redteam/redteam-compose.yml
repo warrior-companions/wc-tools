@@ -1,0 +1,26 @@
+version: "3"
+services:
+  templates:
+      build : templates/
+      container_name: "templates"
+  public-files:
+      image: aikain/simplehttpserver:0.1
+      container_name: "public-files"
+      volumes:
+        - files:/var/www/
+        - logs:/var/www/logs
+  portainer:
+      image: portainer/portainer-ce:2.16.2
+      container_name: "portainer-app"
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - ./home/portainer/data:/data
+      ports:
+        - 9443:9443
+        - 9000:9000
+      command:  --host=unix:///var/run/docker.sock --logo "https://i.imgur.com/kfi99Po.png" --templates "http://templates/templates.yml"
+volumes:
+  files:
+  logs:
+  portainer_data:
+    external: true
