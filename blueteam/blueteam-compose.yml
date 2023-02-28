@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  # OpenVAS - A full-featured vulnerability scanner.
+  # https://openvas.org/
+  #### Container specific links
+  # GitHub: https://github.com/immauss/openvas
+  # Container: https://hub.docker.com/r/immauss/openvas
+  openvas:
+    image: immauss/openvas
+    container_name: openvas
+    environment:
+      - "PASSWORD=put_a_better_password_here"
+      - "USERNAME=admin"
+      - "RELAYHOST=172.17.0.1"
+      - "SMTPPORT=25"
+      - "REDISDBS=512" # number of Redis DBs to use
+      - "QUIET=false"  # dump feed sync noise to /dev/null
+      - "NEWDB=false"  # only use this for creating a blank DB 
+      - "SKIPSYNC=true" # Skips the feed sync on startup.
+      - "RESTORE=false"  # This probably not be used from compose... see docs.
+      - "DEBUG=false"  # This will cause the container to stop and not actually start gvmd
+      - "HTTPS=false"  # whether to use HTTPS or not
+    ports:
+      - 9392:9392
+    volumes:
+      - "openvas:/data"
+    restart: unless-stopped
+#  openvas_scannable:
+#    image: immauss/scannable
+#    container_name: openvas_scannable
+
+volumes:
+  openvas:
