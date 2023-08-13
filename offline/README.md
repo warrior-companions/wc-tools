@@ -19,87 +19,20 @@ You can run all of the tools using the `docker-compose-all-offline.yml` file. Be
 
 ## Setup
 
-For our initial release of offline-tools, we are using `docker-compose` file(s) to run the different tools.  In order to use the `docker-compose` file, you will need to complete the following:
-1. [Install Docker](https://docs.docker.com/install/)
-2. [Install Docker Compose](https://docs.docker.com/compose/install/)
-3. Clone this **wc-offline-tools** repository with `git clone https://github.com/warrior-companions/wc-offline-tools.git`
-4. Determine which `docker-compose` file you will use
-    - Make note of the file name, as it will be used in the next step
-    - Review the file and make updates as needed
-5. (Optional) [Import already existing docker images](#importing-docker-images)
-    - This should be completed for each Docker image you do not want Docker to attempt to download
-6. Start the containers using the selected `docker-compose` file
-    - Navigate to the `wc-offline-tools` directory
-    - Issue `docker-compose -f docker-compose-<selected_file>.yml up -d`
-    - Example running the [research toolset](#research-toolset) file:
-        ```
-        docker-compose -f docker-compose-research.yml up -d
-        ```
-
+See the [Setup section](../README.md#setup) in the [main README in the repo](../README.md).
 
 ### Importing Docker Images
 
-If you already have Docker images stored as `.tar` files, you can import them using the [`docker load`](https://docs.docker.com/engine/reference/commandline/load/) command.
-- Example loading the [`immauss/openvas`](https://hub.docker.com/r/immauss/openvas) image from the `openvas.tar` file:
-    ```
-    docker load -i D:\path-to\docker-image-files\openvas.tar
-    ```
-- Docker should respond with: 
-    > Loaded image: immauss/openvas:latest
-
+See the [Importing Docker Images section](../README.md#importing-docker-images) in the [main README in the repo](../README.md).
 
 ### Downloading Docker Images
 
-If you have not downloaded any Docker images, you can download them using the [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) command.
-- Example downloading the [`mpepping/cyberchef`](https://hub.docker.com/r/mpepping/cyberchef/) image:
-    ```
-    docker pull mpepping/cyberchef
-    ```
-
-You can also pull [`tagged images`](https://www.geeksforgeeks.org/docker-using-image-tags/) by including the `tag` after the image name.
-- Example downloading the [`kiwix/kiwix-serve:3.4.0`](https://hub.docker.com/layers/kiwix/kiwix-serve/3.4.0/images/sha256-734cbd70a982102b7e5403d8d08f37201360af88ebd9ea85ee82e2ce2e575a6b?context=explore) image:
-    ```
-    docker pull kiwix/kiwix-serve:3.4.0
-    ```
-
+See the [Downloading Docker Images section](../README.md#downloading-docker-images) in the [main README in the repo](../README.md).
 
 ### Updating and Exporting Docker images
 
-If you find you want to save a downloaded image to a tarball, you can use the [`docker save`](https://docs.docker.com/engine/reference/commandline/save/) command.
-- Example saving the `mpepping/cyberchef` image to the `cyberchef.tar` file:
-    ```
-    docker save -o D:\path-to\docker-image-files\cyberchef.tar mpepping/cyberchef
-    ```
+See the [Updating and Exporting Docker Images section](../README.md#updating-and-exporting-docker-images) in the [main README in the repo](../README.md).
 
-You can also save [`tagged images`](https://www.geeksforgeeks.org/docker-using-image-tags/) by including the `tag` after the image name.
-- Example saving the `kiwix/kiwix-serve:3.4.0` image to the `kiwix-serve-3.4.0.tar` file:
-    ```
-    docker save -o D:\path-to\docker-image-files\kiwix-serve-3.4.0.tar kiwix/kiwix-serve:3.4.0
-    ```
-
-### Differences between import and load in Docker
-
-In case you are interested more about importing and loading Docker images, here is a [stack overflow response](https://stackoverflow.com/questions/36925261/what-is-the-difference-between-import-and-load-in-docker/36932570#36932570) with an excellent overview of these commands:
-
-<details><summary> overview of docker import and docker load </summary>
-
-Text from [stack overflow](https://stackoverflow.com/questions/36925261/what-is-the-difference-between-import-and-load-in-docker/36932570#36932570):
-> [`docker save`](https://docs.docker.com/engine/reference/commandline/save/) will indeed produce a tarball, but with all parent layers, and all tags + versions.
-> 
-> [`docker export`](https://docs.docker.com/engine/reference/commandline/export/) does also produce a tarball, but without any layer/history.
-> 
-> It is often used when one wants to ["flatten" an image](https://stackoverflow.com/q/22713551/6309), as illustrated in "[Flatten a Docker container or image](http://tuhrig.de/flatten-a-docker-container-or-image/)" from [Thomas Uhrig](http://tuhrig.de/about/):
-> `docker export <CONTAINER ID> | docker import - some-image-name:latest`
-> 
-> However, once those tarballs are produced, load/import are there to:
-> - [`docker import`](https://docs.docker.com/engine/reference/commandline/import/) creates _one_ image from _one_ tarball which is _not even_ an image (just a filesystem you want to import as an image)
->> Create an **empty filesystem image** and import the contents of the tarball
-> 
-> - [`docker load`](https://docs.docker.com/engine/reference/commandline/load/) creates potentially _multiple_ images from a tarred repository (since `docker save` can save _multiple_ images in a tarball).
->> Loads a tarred repository from a file or the standard input stream
-
-
-</details>
 
 ## Tools
 
