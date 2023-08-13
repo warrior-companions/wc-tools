@@ -26,6 +26,9 @@ services:
     volumes:
       - "openvas:/data"
     restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
 #  openvas_scannable:
 #    image: immauss/scannable
 #    container_name: openvas_scannable
