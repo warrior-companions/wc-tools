@@ -3,12 +3,19 @@ services:
   templates:
       build : templates/
       container_name: "templates"
+      # the containers deployed by portainer should use the VPN connection only
+      # https://docs.docker.com/compose/compose-file/compose-file-v3/#network_mode
+      network_mode: "service:wireguard"
   public-files:
       image: aikain/simplehttpserver:0.1
       container_name: "public-files"
       volumes:
         - files:/var/www/
         - logs:/var/www/logs
+  wireguard:
+    image: lscr.io/linuxserver/wireguard:latest
+    container_name: wireguard
+    # this section is incomplete
   portainer:
       image: portainer/portainer-ce:2.16.2
       container_name: "portainer-app"
