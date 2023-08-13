@@ -1,21 +1,30 @@
-# Offline Tools
+# Utility
 
 This directory contains a collection of tools that can be self-hosted for offline use.  These tools have been tested on Docker Desktop for Windows, using Linux containers.
 
-## Offline Tool sets
+## Utility Tool sets
 
-### Research Toolset
-The research toolset contains the following tools:
+### Utility Toolset
+The primary utility toolset (`docker-compose-utilities.yml`) contains the following applications:
 - [CyberChef](#cyberchef)
 - [Draw IO](#draw-io)
 - [Heimdall](#heimdall)
 - [Kiwix](#kiwix)
 - [Mitre ATT&CK Navigator](#mitre-attck-navigator)
 
-The research toolset can be ran using the `docker-compose-research.yml` file. Be sure to [setup offline-tools](#setup) before running docker compose.
+The utility toolset can be ran using the `docker-compose-utilities.yml` file. Be sure to go through [setup](#setup) before running docker compose.
 
-### All tools
-You can run all of the tools using the `docker-compose-all-offline.yml` file. Be sure to [setup offline-tools](#setup) before running docker compose.
+### All Utilities
+The full utility toolset (`docker-compose-all-utilities.yml`) contains the following applications:
+- [CyberChef](#cyberchef)
+- [Draw IO](#draw-io)
+- [Heimdall](#heimdall)
+- [Kiwix](#kiwix)
+- [Mitre ATT&CK Navigator](#mitre-attck-navigator)
+- [CTFd](#ctfd)
+- SpeedTest
+
+You can run all of the tools using the `docker-compose-all-utilities.yml` file. Be sure to go through [setup](#setup) before running docker compose.
 
 ## Setup
 
@@ -124,16 +133,4 @@ Container information:
 - GitHub: https://github.com/reuteras/container-attack-navigator
 - Docker: https://hub.docker.com/r/reuteras/container-attack-navigator
 
-
-### OpenVAS
-
-OpenVAS is a full-featured vulnerability scanner. The `immauss/openvas` container runs the Greenbone Vulnerability Manager.
-- Website: https://openvas.org/
-- Container used: `immauss/openvas`
-
-***IMPORTANT***:  Before starting the container, be sure to update the `PASSWORD` variable (in the `enviornment` section) within the `docker-compose` file for OpenVAS. The password stored in the publicly available compose file should not be used.
-
-Container information:
-- GitHub: https://github.com/immauss/openvas
-- Docker: https://hub.docker.com/r/immauss/openvas
 
