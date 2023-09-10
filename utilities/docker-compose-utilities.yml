@@ -12,6 +12,9 @@ services:
     ports:
       - 8080:80
     restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
 
 
   # Heimdall - Application Dashboard
@@ -27,6 +30,9 @@ services:
     volumes:
       - ./appdata/heimdall:/config
     restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
 
 
   # Kiwix - https://www.kiwix.org/
@@ -50,6 +56,9 @@ services:
     command: "*.zim"
     #command: "-M /library/ZIM/*"
     restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
 
 
   # CyberChef - The Cyber Swiss Army Knife
@@ -64,6 +73,9 @@ services:
     ports:
       - 8380:8000
     restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
 
 
   # Draw IO - https://www.diagrams.net/
@@ -78,4 +90,7 @@ services:
       - 8480:8080
       - 8443:443
     restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
 
