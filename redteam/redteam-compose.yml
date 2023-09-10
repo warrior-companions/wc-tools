@@ -11,16 +11,14 @@ services:
         - logs:/var/www/logs
   portainer:
       image: portainer/portainer-ce:2.16.2
-      container_name: "portainer-app"
+      container_name: "portainer"
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock
-        - ./home/portainer/data:/data
+        - /home/portainer/data:/data
       ports:
         - 9443:9443
         - 9000:9000
-      command:  --host=unix:///var/run/docker.sock --logo "https://i.imgur.com/kfi99Po.png" --templates "http://templates/templates.yml"
+      command:  --host=unix:///var/run/docker.sock --templates "http://templates/templates.yml"
 volumes:
   files:
   logs:
-  portainer_data:
-    external: true
