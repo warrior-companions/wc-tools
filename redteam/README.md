@@ -4,7 +4,7 @@ This `docker-compose` will spin up a Portainer container that allows easy setup 
 
 ## Setup
 
-For our initial release of readteam, we are using a `docker-compose` file to launch Portainer.  In order to use the `docker-compose` file, you will need to complete the following:
+For our initial release of redteam, we are using a `docker-compose` file to launch Portainer.  In order to use the `docker-compose` file, you will need to complete the following:
 1. [Install Docker](https://docs.docker.com/install/)
 2. [Install Docker Compose](https://docs.docker.com/compose/install/)
 3. The `docker-compose` file name is `redteam-compose.yml`.
