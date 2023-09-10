@@ -1,0 +1,5 @@
+redteam/home/portainer/data/certs/key.pem
+redteam/home/portainer/data/certs/cert.pem
+redteam/home/portainer/data/portainer.key
+redteam/home/portainer/data/portainer.db
+redteam/home/portainer/data/portainer.pub
