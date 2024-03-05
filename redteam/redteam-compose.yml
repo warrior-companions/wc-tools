@@ -21,7 +21,7 @@ services:
       container_name: "portainer"
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock
-        - /home/portainer/data:/data
+        - ./appdata/portainer/data:/data
       ports:
         - 9443:9443
         - 9000:9000
